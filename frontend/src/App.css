@@ -1,0 +1,133 @@
+/* 🔥 Global */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+/* 🔥 Main container */
+.App {
+  text-align: center;
+  padding: 30px;
+}
+
+/* 🚀 Title */
+h1 {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+/* 📝 Textarea */
+textarea {
+  width: 60%;
+  max-width: 700px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* 🔘 Button */
+button {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+/* 📊 Results section */
+h2 {
+  margin-top: 30px;
+  color: #111827;
+}
+
+/* 🎯 Candidate Card */
+.card {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  width: 60%;
+  max-width: 800px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* 🏆 Rank title */
+.card h3 {
+  margin-bottom: 10px;
+  color: #1f2937;
+}
+
+/* 📊 Progress bar */
+.progress-container {
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+}
+
+/* 🎨 Interest colors */
+.high {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.medium {
+  color: #facc15;
+  font-weight: bold;
+}
+
+.low {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+/* 💡 Reason box */
+.reason {
+  background: #f3f4f6;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  textarea {
+    width: 90%;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
