@@ -1,57 +1,50 @@
-🚀 AI-Powered Talent Scout & Engagement Agent
+# 🚀 AI-Powered Talent Scout & Engagement Agent
 
 An intelligent AI system that helps recruiters quickly identify, rank, and understand candidates based on a given Job Description.
 
-🧠 Problem Statement
+---
 
-Recruiters spend hours:
+## 🧠 Problem Statement
 
-Scanning resumes
-Matching skills manually
-Assessing candidate relevance
+Recruiters spend hours scanning resumes, matching skills manually, and assessing candidate relevance. This project solves that by building an AI-powered agent that parses Job Descriptions, matches candidates intelligently, scores them based on relevance, and explains why they are selected.
 
-This project solves that by building an AI-powered agent that:
+---
 
-Analyzes Job Descriptions
-Matches candidates
-Scores them
-Explains why they are selected
-⚙️ Features
+## ⚙️ Features
 
-✅ Job Description Parsing
-Extracts required skills from input JD
+- Job Description Analysis  
+- AI-Based Candidate Matching (Groq - LLaMA 3)  
+- Match Score (0–100)  
+- Interest Level Detection (High / Medium / Low)  
+- Explainability (Matched Skills Reasoning) 🔥  
+- Ranked Candidate Output  
+- Clean and Interactive UI  
 
-✅ AI-Based Candidate Matching
-Uses LLM (Groq - LLaMA 3) to evaluate candidate relevance
+---
 
-✅ Match Score (0–100)
-Ranks candidates based on skill alignment
+## 🖥️ Tech Stack
 
-✅ Interest Level Detection
-Classifies candidate as High / Medium / Low
+Frontend:
+- React.js  
+- Custom CSS  
 
-✅ Explainability (🔥 Key Feature)
-Shows why a candidate is selected
-→ Based on matched skills
+Backend:
+- FastAPI (Python)  
 
-✅ Ranking System
-Automatically sorts best candidates first
+AI Model:
+- Groq API  
+- LLaMA 3 (llama-3.1-8b-instant)  
 
-🖥️ Tech Stack
-🔹 Frontend
-React.js
-CSS (custom UI)
-🔹 Backend
-FastAPI (Python)
-🔹 AI Model
-Groq API
-LLaMA 3 (llama-3.1-8b-instant)
-🏗️ Project Structure
+---
+
+## 🏗️ Project Structure
+
 AI-Talent-Scout/
 │
 ├── backend/
 │   ├── main.py
 │   ├── .env
+│   ├── requirements.txt
 │
 ├── frontend/
 │   ├── src/
@@ -59,30 +52,51 @@ AI-Talent-Scout/
 │   │   ├── App.css
 │
 └── README.md
-🚀 How to Run Locally
-1️⃣ Clone the repository
-git clone https://github.com/your-username/AI-Talent-Scout.git
-cd AI-Talent-Scout
-2️⃣ Backend Setup
-cd backend
-python -m venv venv
-venv\Scripts\activate   # Windows
-pip install -r requirements.txt
 
-Create .env file:
+---
 
-GROQ_API_KEY=your_api_key_here
+## 🚀 How to Run Locally
+
+1. Clone the repository
+
+git clone https://github.com/your-username/AI-Talent-Scout.git  
+cd AI-Talent-Scout  
+
+---
+
+2. Backend Setup
+
+cd backend  
+python -m venv venv  
+venv\Scripts\activate   (Windows)  
+pip install -r requirements.txt  
+
+Create a `.env` file:
+
+GROQ_API_KEY=your_api_key_here  
 
 Run backend:
 
-uvicorn main:app --reload
-3️⃣ Frontend Setup
-cd ../frontend
-npm install
-npm start
-🧪 Sample Input
+uvicorn main:app --reload  
+
+---
+
+3. Frontend Setup
+
+cd ../frontend  
+npm install  
+npm start  
+
+---
+
+## 🧪 Sample Input
+
 Looking for Python developer with AI and ML experience
-📊 Sample Output
+
+---
+
+## 📊 Sample Output
+
 1. Karan — Score: 85 — High  
    Why: Matched skills: Python, AI  
 
@@ -91,42 +105,56 @@ Looking for Python developer with AI and ML experience
 
 3. Anita — Score: 20 — Low  
    Why: No strong skill match  
-🎯 Use Case
-Recruitment platforms
-HR automation tools
-Resume screening systems
-Talent acquisition dashboards
-🔥 What Makes This Special
-Combines AI + Explainability
-Real-time scoring
-Clean UI for recruiters
-Fully functional end-to-end system
-🚀 Future Enhancements
-Resume upload & parsing
-Candidate database integration
-Conversational AI recruiter bot
-Email outreach automation
-Skill similarity using embeddings
-👨‍💻 Author
 
-Pratham P
-📧 prathamacharya804@gmail.com
+---
 
-🏆 Hackathon Ready
+## 🎯 Use Cases
 
-This project is designed to:
+- Recruitment platforms  
+- HR automation tools  
+- Resume screening systems  
+- Talent acquisition dashboards  
 
-Demonstrate real-world AI application
-Provide clear business value
-Deliver a working prototype
-🎥 Demo
+---
+
+## 🔥 What Makes This Unique
+
+- Combines AI + Explainability  
+- Real-time scoring system  
+- Recruiter-friendly UI  
+- Fully working end-to-end system  
+
+---
+
+## 🚀 Future Enhancements
+
+- Resume upload & parsing  
+- Candidate database integration  
+- Conversational AI recruiter chatbot  
+- Email outreach automation  
+- Skill similarity using embeddings  
+
+---
+
+## 👨‍💻 Author
+
+Pratham P  
+Email: prathamacharya804@gmail.com  
+
+---
+
+## 🎥 Demo
 
 (Add your demo video link here)
 
-⭐ Final Note
+---
 
-This project showcases how AI can transform recruitment workflows by making them:
+## 🏆 Hackathon Ready
 
-Faster ⚡
-Smarter 🧠
-More transparent 🔍
+This project demonstrates a real-world AI application with clear business value and a fully functional prototype.
+
+---
+
+## ⭐ Final Note
+
+This project showcases how AI can transform recruitment workflows by making them faster, smarter, and more transparent.
