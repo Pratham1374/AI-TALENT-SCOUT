@@ -1,7 +1,7 @@
-/* 🔥 Global */
+/* 🌍 Global */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #eef2ff, #f8fafc);
 }
 
@@ -35,16 +35,17 @@ textarea:focus {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* 🔘 Button */
+/* 🔘 Buttons */
 button {
   background: linear-gradient(135deg, #2563eb, #4f46e5);
   color: white;
   padding: 10px 25px;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   transition: 0.3s;
+  margin: 5px;
 }
 
 button:hover {
@@ -52,13 +53,28 @@ button:hover {
   box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
 }
 
-/* 📊 Results section */
+/* 📥 Inputs */
+input {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* 📊 Section headers */
 h2 {
   margin-top: 30px;
   color: #111827;
 }
 
-/* 🎯 Candidate Card */
+/* 🎯 Card */
 .card {
   background: white;
   margin: 20px auto;
@@ -66,13 +82,13 @@ h2 {
   width: 60%;
   max-width: 800px;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   text-align: left;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
 }
 
 /* 🏆 Rank title */

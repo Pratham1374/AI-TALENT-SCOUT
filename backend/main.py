@@ -1,10 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 import os
 from dotenv import load_dotenv
 import re
+from typing import List
+import PyPDF2
+import json
 
 load_dotenv()
 
@@ -20,16 +23,40 @@ app.add_middleware(
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-candidates = [
-    {"name": "Rahul", "skills": ["Python", "ML", "React"]},
-    {"name": "Anita", "skills": ["Java", "Spring", "SQL"]},
-    {"name": "Karan", "skills": ["Python", "AI", "Data Science"]},
-    {"name": "Sneha", "skills": ["React", "Node", "MongoDB"]},
-]
+# 🔥 JSON STORAGE FUNCTIONS
+def load_candidates():
+    try:
+        with open("candidates.json", "r") as f:
+            return json.load(f)
+    except:
+        return []
 
+def save_candidates(data):
+    with open("candidates.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+# Load existing candidates
+candidates = load_candidates()
+
+# Default candidates if file empty
+if not candidates:
+    candidates = [
+        {"name": "Rahul", "skills": ["Python", "ML", "React"]},
+        {"name": "Anita", "skills": ["Java", "Spring", "SQL"]},
+        {"name": "Karan", "skills": ["Python", "AI", "Data Science"]},
+        {"name": "Sneha", "skills": ["React", "Node", "MongoDB"]},
+    ]
+    save_candidates(candidates)
+
+# Models
 class InputData(BaseModel):
     jd: str
 
+class Candidate(BaseModel):
+    name: str
+    skills: List[str]
+
+# 🚀 ANALYZE
 @app.post("/analyze")
 def analyze(data: InputData):
     results = []
@@ -51,7 +78,7 @@ Candidate skills:
 
 Also say interest: High, Medium or Low.
 
-Example output:
+Example:
 Score: 80
 Interest: High
 """
@@ -60,11 +87,9 @@ Interest: High
 
             text = response.choices[0].message.content
 
-            # 🔥 Extract score
             score_match = re.search(r"\d+", text)
             score = int(score_match.group()) if score_match else 50
 
-            # 🔥 Extract interest
             if "High" in text:
                 interest = "High"
             elif "Medium" in text:
@@ -72,7 +97,6 @@ Interest: High
             else:
                 interest = "Low"
 
-            # 🔥 NEW: MATCHED SKILLS LOGIC
             matched_skills = [
                 skill for skill in c["skills"]
                 if skill.lower() in data.jd.lower()
@@ -84,7 +108,6 @@ Interest: High
                 else "No strong skill match found"
             )
 
-            # 🔥 FINAL RESULT
             results.append({
                 "candidate": c["name"],
                 "match_score": score,
@@ -102,7 +125,54 @@ Interest: High
                 "reason": "Error analyzing candidate"
             })
 
-    # 🔥 Sort by score
     results = sorted(results, key=lambda x: x["match_score"], reverse=True)
 
     return {"results": results}
+
+
+# 🚀 ADD CANDIDATE
+@app.post("/add_candidate")
+def add_candidate(candidate: Candidate):
+    candidates.append({
+        "name": candidate.name,
+        "skills": candidate.skills
+    })
+
+    save_candidates(candidates)
+
+    return {"message": "Candidate added & saved successfully"}
+
+
+# 🚀 UPLOAD RESUME
+@app.post("/upload_resume")
+async def upload_resume(file: UploadFile = File(...)):
+    reader = PyPDF2.PdfReader(file.file)
+
+    text = ""
+    for page in reader.pages:
+        if page.extract_text():
+            text += page.extract_text()
+
+    skills_list = [
+        "Python", "Java", "React", "SQL",
+        "ML", "AI", "Node", "MongoDB",
+        "Django", "Spring", "Kubernetes", "Docker"
+    ]
+
+    found_skills = [
+        skill for skill in skills_list
+        if skill.lower() in text.lower()
+    ]
+
+    new_candidate = {
+        "name": file.filename.split(".")[0],
+        "skills": found_skills if found_skills else ["General"]
+    }
+
+    candidates.append(new_candidate)
+    save_candidates(candidates)
+
+    return {
+        "message": "Resume processed & saved",
+        "candidate": new_candidate
+    }

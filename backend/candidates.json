@@ -1,0 +1,60 @@
+[
+    {
+        "name": "Rahul",
+        "skills": [
+            "Python",
+            "ML",
+            "React"
+        ]
+    },
+    {
+        "name": "Anita",
+        "skills": [
+            "Java",
+            "Spring",
+            "SQL"
+        ]
+    },
+    {
+        "name": "Karan",
+        "skills": [
+            "Python",
+            "AI",
+            "Data Science"
+        ]
+    },
+    {
+        "name": "Sneha",
+        "skills": [
+            "React",
+            "Node",
+            "MongoDB"
+        ]
+    },
+    {
+        "name": "Ravi",
+        "skills": [
+            "Python",
+            "Django"
+        ]
+    },
+    {
+        "name": "Pratham_P",
+        "skills": [
+            "Python",
+            "Java",
+            "SQL",
+            "ML",
+            "AI",
+            "MongoDB"
+        ]
+    },
+    {
+        "name": "Laxman",
+        "skills": [
+            "Python",
+            "AI",
+            "ML"
+        ]
+    }
+]
