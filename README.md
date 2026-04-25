@@ -83,7 +83,7 @@ uvicorn main:app --reload
 
 3. Frontend Setup
 
-cd ../frontend  
+cd frontend  
 npm install  
 npm start  
 
