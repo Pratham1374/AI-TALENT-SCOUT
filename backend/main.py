@@ -35,10 +35,10 @@ def save_candidates(data):
     with open("candidates.json", "w") as f:
         json.dump(data, f, indent=4)
 
-# Load existing candidates
+# Load initial data
 candidates = load_candidates()
 
-# Default candidates if file empty
+# Default candidates if empty
 if not candidates:
     candidates = [
         {"name": "Rahul", "skills": ["Python", "ML", "React"]},
@@ -59,6 +59,9 @@ class Candidate(BaseModel):
 # 🚀 ANALYZE
 @app.post("/analyze")
 def analyze(data: InputData):
+    global candidates
+    candidates = load_candidates()  # always get latest
+
     results = []
 
     for c in candidates:
@@ -133,10 +136,20 @@ Interest: High
 # 🚀 ADD CANDIDATE
 @app.post("/add_candidate")
 def add_candidate(candidate: Candidate):
-    candidates.append({
+    global candidates
+
+    candidates = load_candidates()  # 🔥 reload latest
+
+    new_candidate = {
         "name": candidate.name,
         "skills": candidate.skills
-    })
+    }
+
+    # Optional: prevent duplicates
+    if any(c["name"] == new_candidate["name"] for c in candidates):
+        return {"message": "Candidate already exists"}
+
+    candidates.append(new_candidate)
 
     save_candidates(candidates)
 
@@ -146,6 +159,10 @@ def add_candidate(candidate: Candidate):
 # 🚀 UPLOAD RESUME
 @app.post("/upload_resume")
 async def upload_resume(file: UploadFile = File(...)):
+    global candidates
+
+    candidates = load_candidates()  # 🔥 reload latest
+
     reader = PyPDF2.PdfReader(file.file)
 
     text = ""
@@ -169,7 +186,12 @@ async def upload_resume(file: UploadFile = File(...)):
         "skills": found_skills if found_skills else ["General"]
     }
 
+    # Optional: prevent duplicates
+    if any(c["name"] == new_candidate["name"] for c in candidates):
+        return {"message": "Candidate already exists"}
+
     candidates.append(new_candidate)
+
     save_candidates(candidates)
 
     return {

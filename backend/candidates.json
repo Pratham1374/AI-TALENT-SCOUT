@@ -39,22 +39,21 @@
         ]
     },
     {
-        "name": "Pratham_P",
+        "name": "Preetham",
+        "skills": [
+            "Cyber Security",
+            "AI"
+        ]
+    },
+    {
+        "name": "EchoBrains_Laxman_Sannu_Gouda",
         "skills": [
             "Python",
             "Java",
             "SQL",
             "ML",
             "AI",
-            "MongoDB"
-        ]
-    },
-    {
-        "name": "Laxman",
-        "skills": [
-            "Python",
-            "AI",
-            "ML"
+            "Django"
         ]
     }
 ]
