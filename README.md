@@ -141,11 +141,6 @@ Looking for Python developer with AI and ML experience
 Pratham P  
 Email: prathamacharya804@gmail.com  
 
----
-
-## 🎥 Demo
-
-(Add your demo video link here)
 
 ---
 
